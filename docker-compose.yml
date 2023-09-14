@@ -1,0 +1,18 @@
+version: "3.7"
+services:
+  backend:
+    container_name: backendIngSoft2
+    build: #se puede poner solo el punto si el archivo se llama dockerfile
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "3001:5001" # puerto fisico VS puerto del contenedor
+    networks:
+      - processor-net
+
+networks:
+  processor-net:
+    driver: bridge
+
+
+    
