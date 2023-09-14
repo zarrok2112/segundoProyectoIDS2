@@ -5,4 +5,5 @@ export const startConnection = async () => {
     useNewUrlParser: true,
     useUnifiedTopology: true,
   });
+  console.log('MongoDB connected');
 };

@@ -1,12 +1,17 @@
-import Express  from "express";
+import Express from "express";
 import bodyParser from "body-parser";
 import dotenv from "dotenv";
-import {startConnection} from "./src/mongo/index.mjs";
+import { startConnection } from "./src/mongo/index.mjs";
 import filterRouter from "./src/handlers/filters/index.mjs";
+import Boom from "@hapi/boom";
+
+//configuracion del Env
 dotenv.config();
 
 const app = Express();
+
 app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: true }));
 
 app.get('/', (req, res) => {
     res.send('Hello World!');
@@ -14,11 +19,25 @@ app.get('/', (req, res) => {
 
 app.use('/images', filterRouter);
 
-const startServer = async () => {
-    await startConnection();
-    app.listen(PORT, () => {
-        console.log('http://localhost:' + PORT);
-    });
-}
+app.use((err, _, res, next) => {
+    if (err) {
+      let error = Boom.isBoom(err) ? err : Boom.internal(err);
+      const statusCode = error.output.statusCode;
+      const payload = error.output.payload;
+      return res.status(statusCode).json(payload);
+    }
+  
+    return next;
+  });
 
-startServer();
+  (async () => {
+    try {
+      await startConnection();
+    } catch (e) {
+      console.log(e);
+    }
+  })();
+
+  app.listen(process.env.PORT, () => {
+    console.log(`url: http://localhost:${process.env.PORT}`);
+  });

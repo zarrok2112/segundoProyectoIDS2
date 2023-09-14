@@ -4,18 +4,18 @@ import { TYPE_FILTERS } from '../commons/constants.mjs';
 const ProcessSchema = new Schema(
   {
     filters: {
-    type: [
+      type: [
         {
           type: String,
           enum: TYPE_FILTERS,
           required: true,
         },
-    ],
+      ],
     },
   },
-  { 
-    timestamps: true 
-}
+  {
+    timestamps: true
+  }
 );
 const ProcessModel = model('images', ProcessSchema);
 export default ProcessModel;
