@@ -21,23 +21,23 @@ app.use('/images', filterRouter);
 
 app.use((err, _, res, next) => {
     if (err) {
-      let error = Boom.isBoom(err) ? err : Boom.internal(err);
-      const statusCode = error.output.statusCode;
-      const payload = error.output.payload;
-      return res.status(statusCode).json(payload);
+        let error = Boom.isBoom(err) ? err : Boom.internal(err);
+        const statusCode = error.output.statusCode;
+        const payload = error.output.payload;
+        return res.status(statusCode).json(payload);
     }
-  
+
     return next;
-  });
+});
 
-  (async () => {
+(async () => {
     try {
-      await startConnection();
+        await startConnection();
     } catch (e) {
-      console.log(e);
+        console.log(e);
     }
-  })();
+})();
 
-  app.listen(process.env.PORT, () => {
+app.listen(process.env.PORT, () => {
     console.log(`url: http://localhost:${process.env.PORT}`);
-  });
+});
