@@ -4,6 +4,7 @@ import dotenv from "dotenv";
 import { startConnection } from "./src/mongo/index.mjs";
 import filterRouter from "./src/handlers/filters/index.mjs";
 import Boom from "@hapi/boom";
+import {PORT} from "./src/commons/env.mjs";
 
 //configuracion del Env
 dotenv.config();
@@ -39,5 +40,5 @@ app.use((err, _, res, next) => {
 })();
 
 app.listen(process.env.PORT, () => {
-    console.log(`url: http://localhost:${process.env.PORT}`);
+    console.log(`url: http://localhost:${PORT}`);
 });
