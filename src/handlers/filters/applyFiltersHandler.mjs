@@ -1,4 +1,4 @@
-import applyFilters from '../../controllers/filters/applyFilters.js';
+import applyFilters from '../../controllers/filters/applyFilters.mjs';
 import Boom from '@hapi/boom';
 import { StatusCodes } from 'http-status-codes';
 

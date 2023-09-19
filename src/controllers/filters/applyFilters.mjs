@@ -1,5 +1,6 @@
 import Boom from '@hapi/boom';
-import { FILTERS } from '../../commons/constants.js';
+import Joi from 'joi';
+import { FILTERS } from '../../commons/constants.mjs';
 
 const PayloadValidation = Joi.object({
     filters: Joi.array().min(1).items(

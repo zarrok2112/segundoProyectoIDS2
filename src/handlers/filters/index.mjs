@@ -1,6 +1,6 @@
 import { Router } from 'express';
 import applyFiltersHandler from './applyFiltersHandler.mjs';
-import upload from '../utils/multerUtils.mjs';
+import upload from '../../utils/multerutils.mjs';
 
 const router = Router();
 
