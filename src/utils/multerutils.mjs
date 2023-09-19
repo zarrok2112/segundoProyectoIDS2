@@ -1,5 +1,4 @@
 import multer from 'multer';
-import { extname } from 'path';
 import Boom from '@hapi/boom';
 
 const imagesType = ['image/png'];
