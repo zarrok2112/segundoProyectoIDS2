@@ -9,6 +9,11 @@ services:
       - "3001:5001" # puerto fisico VS puerto del contenedor
     networks:
       - processor-net
+  redis:
+    image: redis:7.2.1 # Usa la imagen oficial de Redis
+    container_name: redisIngSoft2
+    ports:
+      - "6379:6379" # Mapea el puerto de Redis
 
 networks:
   processor-net:
