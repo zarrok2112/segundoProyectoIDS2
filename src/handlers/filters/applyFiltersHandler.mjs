@@ -1,19 +1,19 @@
-import applyFilters from "../../controllers/filters/applyFilters.mjs";
-import Boom from "@hapi/boom";
-import { StatusCodes } from "http-status-codes";
+import Boom from '@hapi/boom';
+import { StatusCodes } from 'http-status-codes';
+import applyFilters from '../../controllers/filters/applyFilters.mjs';
 
 const applyFiltersHandler = async (req, res, next) => {
   try {
-    const filters = req.body.filters;
+    const { filters } = req.body;
     if (!filters) {
-      throw Boom.badData("Filters are required");
+      throw Boom.badData('Filters are required');
     }
 
     let filtersParsed = null;
     try {
       filtersParsed = JSON.parse(filters);
     } catch (error) {
-      throw Boom.badData("Filters are required");
+      throw Boom.badData('Filters are required');
     }
 
     console.log(filtersParsed);

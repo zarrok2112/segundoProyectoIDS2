@@ -1,5 +1,5 @@
-import { Schema, model } from "mongoose";
-import { TYPE_FILTERS } from "../commons/constants.mjs";
+import { Schema, model } from 'mongoose';
+import { TYPE_FILTERS } from '../commons/constants.mjs';
 
 const ProcessSchema = new Schema(
   {
@@ -15,7 +15,7 @@ const ProcessSchema = new Schema(
   },
   {
     timestamps: true,
-  }
+  },
 );
-const ProcessModel = model("images", ProcessSchema);
+const ProcessModel = model('images', ProcessSchema);
 export default ProcessModel;
