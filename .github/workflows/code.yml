@@ -2,11 +2,11 @@ name: code workflow
 on:
   push:
     branches:
-      -main
-      -dev
+      - main
+      - dev
   pull_request:
-      branches:
-      -main
+    branches:
+      - main
 jobs:
   code-validation:
     runs-on: ubuntu-22.04
