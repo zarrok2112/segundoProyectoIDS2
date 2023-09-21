@@ -1,7 +1,7 @@
-import multer from "multer";
-import Boom from "@hapi/boom";
+import multer from 'multer';
+import Boom from '@hapi/boom';
 
-const imagesType = ["image/png"];
+const imagesType = ['image/png'];
 
 const upload = multer({
   storage: multer.memoryStorage(),
@@ -9,7 +9,7 @@ const upload = multer({
     if (imagesType.includes(file.mimetype)) {
       cb(null, true);
     } else {
-      const errorMessage = `Solo ${imagesType.join(", ")} son permitidos`;
+      const errorMessage = `Solo ${imagesType.join(', ')} son permitidos`;
       const error = Boom.badData(errorMessage);
       cb(error);
     }
