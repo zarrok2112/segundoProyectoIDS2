@@ -1,9 +1,6 @@
 export const FILTERS = {
-  GREYSCALE: 'grayscale',
-  BLUR: 'blur',
-  NEGATIVE: 'negative',
+  GREYSCALE: "grayscale",
+  BLUR: "blur",
+  NEGATIVE: "negative",
 };
-export const TYPE_FILTERS = [
-  FILTERS.GREYSCALE,
-  FILTERS.BLUR,
-  FILTERS.NEGATIVE];
+export const TYPE_FILTERS = [FILTERS.GREYSCALE, FILTERS.BLUR, FILTERS.NEGATIVE];

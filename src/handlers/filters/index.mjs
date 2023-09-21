@@ -1,14 +1,13 @@
-import { Router } from 'express';
-import applyFiltersHandler from './applyFiltersHandler.mjs';
-import upload from '../../utils/multerutils.mjs';
+import { Router } from "express";
+import applyFiltersHandler from "./applyFiltersHandler.mjs";
+import upload from "../../utils/multerutils.mjs";
 
 const router = Router();
 
+router.get("/", (_, res) => {
+  res.send("aplicacion para filtros");
+});
 
-router.get('/', (_, res) => {
-    res.send('aplicacion para filtros');
-  });
-  
-  router.post('/', upload.array('images[]'), applyFiltersHandler);
+router.post("/", upload.array("images[]"), applyFiltersHandler);
 
 export default router;
