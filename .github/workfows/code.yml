@@ -4,6 +4,9 @@ on:
     branches:
       -main
       -dev
+  pull_request:
+      branches:
+      -main
 jobs:
   code-validation:
     runs-on: ubuntu-22.04
