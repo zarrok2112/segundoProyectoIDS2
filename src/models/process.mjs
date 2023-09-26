@@ -18,4 +18,5 @@ const ProcessSchema = new Schema(
   },
 );
 const ProcessModel = model('images', ProcessSchema);
+
 export default ProcessModel;

@@ -16,8 +16,6 @@ const applyFiltersHandler = async (req, res, next) => {
       throw Boom.badData('Filters are required');
     }
 
-    console.log(filtersParsed);
-
     const response = await applyFilters({
       filters: filtersParsed,
       files: req.files,
@@ -26,6 +24,7 @@ const applyFiltersHandler = async (req, res, next) => {
     return res.status(StatusCodes.OK).json(response);
   } catch (e) {
     next(Boom.isBoom(e) ? e : Boom.internal(e));
+    return res.status(400).json(e);
   }
 };
 
