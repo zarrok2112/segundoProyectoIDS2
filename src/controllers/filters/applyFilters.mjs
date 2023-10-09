@@ -9,8 +9,8 @@ const PayloadValidation = Joi.object({
     .items(
       Joi.string().valid(FILTERS.NEGATIVE, FILTERS.GREYSCALE, FILTERS.BLUR),
     ),
-  files: Joi.array().required(),
-});
+  files: Joi.array().required().min(1),
+}).required();
 
 const applyFilters = async (payload) => {
   try {

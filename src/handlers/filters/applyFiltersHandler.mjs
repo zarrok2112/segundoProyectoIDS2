@@ -1,30 +1,16 @@
 import Boom from '@hapi/boom';
 import { StatusCodes } from 'http-status-codes';
-import applyFilters from '../../controllers/filters/applyFilters.mjs';
 
 const applyFiltersHandler = async (req, res, next) => {
   try {
-    const { filters } = req.body;
-    if (!filters) {
-      throw Boom.badData('Filters are required');
-    }
+    const { body } = req;
 
-    let filtersParsed = null;
-    try {
-      filtersParsed = JSON.parse(filters);
-    } catch (error) {
-      throw Boom.badData('Filters are required');
-    }
-
-    const response = await applyFilters({
-      filters: filtersParsed,
-      files: req.files,
-    });
-
+    const response = await req.container
+      .processService.applyFilters({ ...body, images: req.files });
     return res.status(StatusCodes.OK).json(response);
-  } catch (e) {
-    next(Boom.isBoom(e) ? e : Boom.internal(e));
-    return res.status(400).json(e);
+  } catch (error) {
+    const err = Boom.isBoom(error) ? error : Boom.internal(error);
+    return next(err);
   }
 };
 

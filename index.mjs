@@ -5,13 +5,14 @@ import Boom from '@hapi/boom';
 import { startConnection } from './src/mongo/index.mjs';
 import filterRouter from './src/handlers/filters/index.mjs';
 import { PORT } from './src/commons/env.mjs';
+import buildContainer from './src/container/buildContainer.mjs';
 
 dotenv.config();
 
 const app = Express();
 
 app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: true }));
+app.use(buildContainer);
 
 app.get('/status', (req, res) => {
   res.send('su estatus es...');
@@ -27,7 +28,7 @@ app.use((err, _, res, next) => {
     return res.status(statusCode).json(payload);
   }
 
-  return next;
+  return next();
 });
 
 (async () => {

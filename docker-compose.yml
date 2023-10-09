@@ -28,6 +28,12 @@ services:
     volumes:
       - minio_storage:/data
     command: server --console-address ":9001" /data
+    healthcheck:
+      test: ["cmd", "curl","-f", "http://localhost:9000/minio/health/live"]
+      interval: 1m30s
+      timeout: 30s
+      retries: 5
+      start_period: 30s
 
 networks:
   processor-net:
