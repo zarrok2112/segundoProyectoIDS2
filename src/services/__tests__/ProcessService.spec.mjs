@@ -1,6 +1,5 @@
-import { describe, test, expect, jest } from '@jest/globals';
-import processRepository from '../ProcessService.mjs';
-import minioServise from '../MinioService.mjs';
+import { describe, test, expect } from '@jest/globals';
+import ProcessService from '../ProcessService.mjs';
 
 const sum = (a, b) => a + b;
 
@@ -15,7 +14,11 @@ describe('test sum', () => {
 });
 
 describe('ProcessServices test', () => {
-  const processRepository = new processRepository();
+  const processRepository = new ProcessService();
 
-  test('');
+  const processService = new ProcessService(processRepository);
+
+  test('Test applyFilters function with invalid payload', () => {
+    expect(() => processService.applyFilters({})).rejects.toThrow();
+  });
 });

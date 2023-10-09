@@ -41,7 +41,7 @@ class MinioService {
 
       const extencion = originalnamaParts[1];
 
-      const fileName =  `${v4().${extencion}}`;
+      const fileName =  `${v4()}.${extencion}`;
 
       await this.conn.send(new PutObjectAclCommand({
         Bucker: BUCKET_NAME

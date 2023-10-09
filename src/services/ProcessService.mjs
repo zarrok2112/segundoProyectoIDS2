@@ -15,8 +15,9 @@ class ProcessService {
     images: Joi.array().required().min(1),
   }).required();
 
-  constructor(processRepository) {
+  constructor({ processRepository, minioServise }) {
     this.processRepository = processRepository;
+    this.minioServise = minioServise;
   }
 
   async applyFilters(payload) {
